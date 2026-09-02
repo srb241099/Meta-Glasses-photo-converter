@@ -6,8 +6,7 @@ const $=id=>document.getElementById(id);
 const fileInput=$("fileInput"),dropzone=$("dropzone"),previewWrap=$("previewWrap"),
 preview=$("preview"),fileMeta=$("fileMeta"),convertBtn=$("convertBtn"),
 downloadBtn=$("downloadBtn"),copyBtn=$("copyBtn"),shareBtn=$("shareBtn"),
-resetBtn=$("resetBtn"),status=$("status"),installBtn=$("installBtn"),
-installNavBtn=$("installNavBtn");
+resetBtn=$("resetBtn"),status=$("status"),installBtn=$("installBtn");
 
 let selectedFile=null,outputDataUrl=null,deferredPrompt=null,previewUrl=null;
 
@@ -68,26 +67,44 @@ resetBtn.addEventListener("click",()=>{
   convertBtn.disabled=true;setOutputReady(false);setStatus("Choose a photo to begin.");
 });
 
-window.addEventListener("beforeinstallprompt",e=>{
-  e.preventDefault();deferredPrompt=e;installBtn.classList.remove("hidden");
-});
-async function installApp(){
-  if(deferredPrompt){
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt=null;installBtn.classList.add("hidden");
-  }else{
-    setStatus("On iPhone: Share → Add to Home Screen. On Android: browser menu → Install app.");
-  }
-}
-installBtn.addEventListener("click",installApp);
-installNavBtn.addEventListener("click",installApp);
-
-window.addEventListener("appinstalled",()=>{
-  installBtn.classList.add("hidden");
-  setStatus("App installed successfully.","ok");
-});
 
 if("serviceWorker" in navigator){
   window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));
 }
+
+});
+
+
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  installBtn?.classList.add("ready");
+});
+
+installBtn?.addEventListener("click",async()=>{
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    const choice=await deferredPrompt.userChoice;
+    if(choice.outcome==="accepted"){
+      setStatus("Installing app…","ok");
+    }
+    deferredPrompt=null;
+    return;
+  }
+
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(isIOS){
+    setStatus("iPhone/iPad: Safari Share button → Add to Home Screen.");
+  }else if(window.matchMedia("(display-mode: standalone)").matches){
+    setStatus("App is already installed.","ok");
+  }else{
+    setStatus("If the install popup does not appear, open browser menu → Install app / Add to Home screen.");
+  }
+});
+
+window.addEventListener("appinstalled",()=>{
+  deferredPrompt=null;
+  installBtn?.classList.add("installed");
+  installBtn.textContent="Installed";
+  setStatus("App installed successfully.","ok");
+});
