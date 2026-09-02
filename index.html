@@ -12,7 +12,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <link rel="icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./css/style.css?v=6">
+  <link rel="stylesheet" href="./css/style.css?v=7">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/piexifjs/1.0.6/piexif.min.js"></script>
 </head>
@@ -96,9 +96,9 @@
 
       <section class="instagram-card">
         <div class="instagram-profile">
-          <div class="instagram-avatar">
-            <img src="./icons/icon-192.png?v=6" alt="SRB">
-          </div>
+          <a class="instagram-avatar" href="https://www.instagram.com/saurabh_rai_srb/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram profile">
+            <img id="instagramProfilePhoto" src="./icons/icon-192.png?v=7" alt="@saurabh_rai_srb profile">
+          </a>
 
           <div class="instagram-info">
             <span class="instagram-label">INSTAGRAM</span>
@@ -124,27 +124,52 @@
         </div>
 
         <div class="recent-posts">
-          <a class="post-placeholder" href="https://www.instagram.com/saurabh_rai_srb/" target="_blank" rel="noopener noreferrer">
+          <a class="post-placeholder real-post" href="https://www.instagram.com/p/C84uryHSLAK/" target="_blank" rel="noopener noreferrer">
             <span class="post-number">01</span>
-            <div class="post-icon">▧</div>
-            <small>Add post link</small>
+            <div class="post-thumb-wrap">
+              <iframe
+                class="instagram-embed-mini"
+                src="https://www.instagram.com/p/C84uryHSLAK/embed/captioned/"
+                title="Instagram post 1"
+                loading="lazy"
+                scrolling="no"
+                allowtransparency="true">
+              </iframe>
+            </div>
+            <span class="open-post">Open Post ↗</span>
           </a>
-
-          <a class="post-placeholder" href="https://www.instagram.com/saurabh_rai_srb/" target="_blank" rel="noopener noreferrer">
+          <a class="post-placeholder real-post" href="https://www.instagram.com/p/CUmx91NhCuc/" target="_blank" rel="noopener noreferrer">
             <span class="post-number">02</span>
-            <div class="post-icon">▧</div>
-            <small>Add post link</small>
+            <div class="post-thumb-wrap">
+              <iframe
+                class="instagram-embed-mini"
+                src="https://www.instagram.com/p/CUmx91NhCuc/embed/captioned/"
+                title="Instagram post 2"
+                loading="lazy"
+                scrolling="no"
+                allowtransparency="true">
+              </iframe>
+            </div>
+            <span class="open-post">Open Post ↗</span>
           </a>
-
-          <a class="post-placeholder" href="https://www.instagram.com/saurabh_rai_srb/" target="_blank" rel="noopener noreferrer">
+          <a class="post-placeholder real-post" href="https://www.instagram.com/p/B7SV22mlGqx/" target="_blank" rel="noopener noreferrer">
             <span class="post-number">03</span>
-            <div class="post-icon">▧</div>
-            <small>Add post link</small>
+            <div class="post-thumb-wrap">
+              <iframe
+                class="instagram-embed-mini"
+                src="https://www.instagram.com/p/B7SV22mlGqx/embed/captioned/"
+                title="Instagram post 3"
+                loading="lazy"
+                scrolling="no"
+                allowtransparency="true">
+              </iframe>
+            </div>
+            <span class="open-post">Open Post ↗</span>
           </a>
         </div>
 
         <p class="instagram-note">
-          Recent post cards can be connected to individual Instagram post URLs without changing the app layout.
+          Tap any post to open it on Instagram.
         </p>
       </section>
 

@@ -1,4 +1,4 @@
-const CACHE="meta-converter-instagram-v6";
+const CACHE="meta-converter-instagram-v7";
 const APP_SHELL=[
   "./",
   "./index.html",

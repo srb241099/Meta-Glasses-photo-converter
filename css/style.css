@@ -542,3 +542,57 @@ body{
     width:100%;
   }
 }
+
+.instagram-avatar{
+  display:block;
+  overflow:hidden;
+  text-decoration:none;
+}
+.real-post{
+  aspect-ratio:1/1.15;
+  padding:0 !important;
+  display:block !important;
+  background:#09090e !important;
+}
+.post-thumb-wrap{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:14px;
+  background:#0b0a11;
+}
+.instagram-embed-mini{
+  position:absolute;
+  width:330%;
+  height:330%;
+  left:-115%;
+  top:-18%;
+  border:0;
+  transform:scale(.303);
+  transform-origin:center top;
+  pointer-events:none;
+  background:#fff;
+}
+.real-post .post-number{
+  z-index:4;
+  background:rgba(5,5,10,.72);
+  backdrop-filter:blur(8px);
+  padding:4px 6px;
+  border-radius:7px;
+  color:#fff;
+}
+.open-post{
+  position:absolute;
+  z-index:5;
+  left:7px;
+  right:7px;
+  bottom:7px;
+  padding:6px 7px;
+  border-radius:9px;
+  text-align:center;
+  font-size:8px;
+  font-weight:900;
+  color:#fff;
+  background:linear-gradient(90deg,rgba(22,140,255,.9),rgba(133,71,255,.92),rgba(255,47,168,.9));
+  box-shadow:0 5px 14px rgba(0,0,0,.3);
+}
