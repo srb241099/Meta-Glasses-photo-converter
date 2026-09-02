@@ -1,4 +1,4 @@
-const CACHE="meta-converter-v1";
+const CACHE="meta-converter-neon-v2";
 const APP_SHELL=[
   "./",
   "./index.html",
