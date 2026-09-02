@@ -56,6 +56,7 @@ async function chooseFile(file) {
       preview.src = previewUrl;
       preview.alt = file.name || "Selected image";
     }
+    dropzone?.classList.add("hidden");
     previewWrap?.classList.remove("hidden");
 
     if (fileMeta) {
@@ -158,6 +159,7 @@ resetBtn?.addEventListener("click", () => {
 
   if (preview) preview.removeAttribute("src");
   previewWrap?.classList.add("hidden");
+  dropzone?.classList.remove("hidden");
   if (fileMeta) fileMeta.textContent = "";
 
   if (convertBtn) convertBtn.disabled = true;
