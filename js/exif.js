@@ -1,29 +1,21 @@
-export function addCompatibilityExif(jpegDataUrl) {
-  if (!window.piexif) return jpegDataUrl;
+export function addCompatibilityExif(jpegDataUrl){
+  if(!window.piexif) return jpegDataUrl;
 
-  const zeroth = {};
-  const exif = {};
+  const zeroth={};
+  const exif={};
 
-  // User-selectable compatibility-style labels.
-  // They are not evidence of the real capture device.
-  zeroth[piexif.ImageIFD.Make] = "Meta AI";
-  zeroth[piexif.ImageIFD.Model] = "Ray-Ban Meta Smart Glasses 2";
-  zeroth[piexif.ImageIFD.Orientation] = 1;
-  zeroth[piexif.ImageIFD.Software] = "Browser Photo Converter";
+  zeroth[piexif.ImageIFD.Make]="Meta AI";
+  zeroth[piexif.ImageIFD.Model]="Ray-Ban Meta Smart Glasses 2";
+  zeroth[piexif.ImageIFD.Orientation]=1;
+  zeroth[piexif.ImageIFD.Software]="Meta Converter PWA";
 
-  const now = new Date();
-  const pad = n => String(n).padStart(2, "0");
-  const stamp = `${now.getFullYear()}:${pad(now.getMonth()+1)}:${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
-  exif[piexif.ExifIFD.DateTimeOriginal] = stamp;
+  const d=new Date();
+  const p=n=>String(n).padStart(2,"0");
+  const stamp=`${d.getFullYear()}:${p(d.getMonth()+1)}:${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  exif[piexif.ExifIFD.DateTimeOriginal]=stamp;
 
-  const exifObj = {
-    "0th": zeroth,
-    "Exif": exif,
-    "GPS": {},
-    "1st": {},
-    "thumbnail": null
-  };
-
-  const bytes = piexif.dump(exifObj);
-  return piexif.insert(bytes, jpegDataUrl);
+  return piexif.insert(
+    piexif.dump({"0th":zeroth,"Exif":exif,"GPS":{},"1st":{},"thumbnail":null}),
+    jpegDataUrl
+  );
 }
