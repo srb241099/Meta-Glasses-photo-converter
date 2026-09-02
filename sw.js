@@ -1,4 +1,4 @@
-const CACHE="meta-converter-neon-v2";
+const CACHE="meta-converter-srb-v3";
 const APP_SHELL=[
   "./",
   "./index.html",
@@ -9,7 +9,8 @@ const APP_SHELL=[
   "./js/utils.js",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./icons/icon-512.png",
+  "./icons/srb-app-icon.png"
 ];
 
 self.addEventListener("install",event=>{
